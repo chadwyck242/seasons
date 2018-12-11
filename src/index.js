@@ -5,7 +5,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      lat: null
+      lat: null,
+      errorMessage: ''
     };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -15,13 +16,20 @@ class App extends React.Component {
           lat: position.coords.latitude
         });
       },
-      err => console.log(err)
+      err => {
+        this.setState({ errorMessage: err.message });
+      }
     );
   }
 
   // React says we have to define render()
   render() {
-    return <div>Latitude: { this.state.lat } </div>;
+    return (
+      <div>
+        Latitude: { this.state.lat }
+        Error: { this.state.errorMessage } 
+      </div>
+    ); 
   }
 }
 
