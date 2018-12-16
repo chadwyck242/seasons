@@ -8,7 +8,9 @@ class App extends React.Component {
       lat: null,
       errorMessage: ''
     };
+  }
 
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       position => {
         // we called setState to update our state object
