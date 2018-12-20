@@ -21,13 +21,16 @@ const getSeason = (lat, month) => {
 
 const SeasonDisplay = props => {
   const season = getSeason(props.lat, new Date().getMonth());
+
   // using ES2015 destructuring to get {text, iconName}
+  // it selects the correct properties using the season key, and 
+  // destructures these values into the two variables below
   const { text, iconName } = seasonConfig[season];
 
   return <div>
-      <i className={`${iconName} icon`} />
+      <i className={`icon-left massive ${iconName} icon`} />
       <h1>{text}</h1>
-      <i className={`${iconName} icon`} />
+      <i className={`icon-right massive ${iconName} icon`} />
     </div>;
 };
 
